@@ -32,8 +32,8 @@ O sistema foi planejado para permitir o cadastro e gerenciamento de:
 | Nome | GitHub |
 |------|--------|
 | Gabriel Barreto Fragoso | [@gabriel-usuario] https://github.com/barretao00 |
-| Miryam da Silva Souza | [@miryam-usuario] https://github.com/Miryamsilva98 | 
-| Thais Helena Bezerra da Silva | [@thais-usuario] https://github.com/thaishbs | 
+| Miryam da Silva Souza | [@miryam-usuario] https://github.com/Miryamsilva
+| Thais Helena Bezerra da Silva | [@thais-usuario]  https://github.com/thaishbs
 | Gustavo Henrique de Souza | [@gustavo-usuario] https://github.com/gustavohsw |
 | Cristiano Reis Santos | [@cristiano-usuario] https://github.com/CrisRSantos|
 | Roger Vinicius Teixeira Seixas Cruz | [@roger-usuario] https://github.com/RogerVCruz |
