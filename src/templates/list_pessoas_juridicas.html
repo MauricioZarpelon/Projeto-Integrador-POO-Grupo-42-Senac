@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>Pessoas Jurídicas</h1>
+<a class="btn-add" href="{{ url_for('pessoa_juridica_bp.formulario') }}">➕ Adicionar Novo</a>
+<table>
+  <thead><tr><th>ID</th><th>Razão Social</th><th>CNPJ</th><th>Telefone</th><th>Ações</th></tr></thead>
+  <tbody>
+  {% for p in registros %}
+    <tr>
+      <td>{{ p.id }}</td>
+      <td>{{ p.razao_social }}</td>
+      <td>{{ p.cnpj }}</td>
+      <td>{{ p.telefone or '-' }}</td>
+      <td class="actions"><a href="{{ url_for('pessoa_juridica_bp.editar', id=p.id) }}">Editar</a> <a class="delete" href="{{ url_for('pessoa_juridica_bp.excluir', id=p.id) }}" onclick="return confirm('Excluir?')">Excluir</a></td>
+    </tr>
+  {% else %}
+    <tr><td colspan="5">Nenhum registro encontrado.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

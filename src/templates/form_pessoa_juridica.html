@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>{{ 'Editar' if registro else 'Nova' }} Pessoa Jurídica</h1>
+<form id="pj-form" method="post" action="{{ url_for('pessoa_juridica_bp.editar', id=registro.id) if registro else url_for('pessoa_juridica_bp.criar') }}">
+  <div class="form-row">
+    <div class="form-group"><label>Razão Social *</label><input name="razao_social" required value="{{ registro.razao_social if registro else '' }}"></div>
+    <div class="form-group"><label>CNPJ *</label><input id="cnpj" name="cnpj" required value="{{ registro.cnpj if registro else '' }}"></div>
+  </div>
+  <div class="buttons">
+    <button class="btn btn-primary" type="submit">SALVAR</button>
+    <a class="btn btn-secondary" href="{{ url_for('pessoa_juridica_bp.listar') }}">CANCELAR</a>
+  </div>
+</form>
+<script>
+function somenteNumeros(s){ return s.replace(/\D/g,''); }
+function validarCNPJ(cnpj){
+  cnpj = somenteNumeros(cnpj);
+  if(cnpj.length !== 14) return false;
+  if(/^(\d)\1+$/.test(cnpj)) return false;
+  var tamanho = cnpj.length - 2, numeros = cnpj.substring(0, tamanho), digitos = cnpj.substring(tamanho);
+  var soma = 0, pos = tamanho - 7;
+  for (var i = tamanho; i >= 1; i--) {
+    soma += parseInt(numeros.charAt(tamanho - i)) * pos--;
+    if (pos < 2) pos = 9;
+  }
+  var resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+  if (resultado != parseInt(digitos.charAt(0))) return false;
+  tamanho = tamanho + 1; numeros = cnpj.substring(0, tamanho); soma = 0; pos = tamanho - 7;
+  for (i = tamanho; i >= 1; i--) { soma += parseInt(numeros.charAt(tamanho - i)) * pos--; if (pos < 2) pos = 9; }
+  resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+  if (resultado != parseInt(digitos.charAt(1))) return false;
+  return true;
+}
+document.getElementById('pj-form').addEventListener('submit', function(e){
+  if(!validarCNPJ(document.getElementById('cnpj').value)){ alert('CNPJ inválido.'); e.preventDefault(); }
+});
+</script>
+{% endblock %}

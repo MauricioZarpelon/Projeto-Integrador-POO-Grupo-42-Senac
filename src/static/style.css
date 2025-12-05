@@ -1,0 +1,35 @@
+:root{
+  --blue:#6f9dc0;
+  --menu-bg:#e6e6e6;
+  --menu-border:#3b3b3b;
+  --container-width:780px;
+}
+*{box-sizing:border-box;font-family: "Segoe UI", Roboto, Arial, sans-serif}
+body{margin:0;background:#fff;color:#111}
+.topbar{background:var(--blue);padding:28px 8px;border-radius:10px;margin:12px}
+.topbar-inner{max-width:1200px;margin:0 auto;text-align:center}
+.topbar h1{color:white;margin:0;font-size:38px;letter-spacing:1px}
+
+.layout{display:flex;gap:20px;max-width:1200px;margin:18px auto;padding:0 12px}
+.menu{width:260px;background:var(--menu-bg);border-radius:60px;padding:28px;border:3px solid var(--menu-border)}
+.menu-inner ul{list-style:none;padding:0;margin:0}
+.menu-inner li{padding:14px 6px;font-size:26px}
+.menu-inner a{text-decoration:none;color:#222;display:block}
+
+.content{flex:1;padding:10px}
+.container{max-width:var(--container-width);margin:0 auto}
+
+.title{font-weight:700;font-size:22px;margin:8px 0 18px}
+.table{width:100%;border-collapse:collapse;margin-top:12px}
+.table th,.table td{padding:10px;border-bottom:1px solid #ddd;text-align:left;font-size:14px}
+.table th{background:#f5f5f5}
+
+.actions button{margin-right:6px;padding:6px 10px;border-radius:6px;border:0;cursor:pointer}
+.btn-add{background:var(--blue);color:white;padding:8px 12px;border-radius:6px}
+.btn-edit{background:#ffd966}
+.btn-delete{background:#f28b82;color:white}
+
+.form-row{margin-bottom:10px}
+input, select, textarea{width:100%;padding:8px;border-radius:10px;border:1px solid #ddd}
+
+.footer{text-align:center;padding:18px 0;color:#666;margin-top:18px}

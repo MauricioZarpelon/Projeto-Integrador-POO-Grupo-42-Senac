@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Sistema de Cadastro</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <h1>SISTEMA DE CADASTRO</h1>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="menu">
+      <div class="menu-inner">
+        <ul>
+          <li><a href="{{ url_for('home_bp.index') }}">🏠 Início</a></li>
+          <li><a href="{{ url_for('pessoa_fisica_bp.listar') }}">👤 Pessoa Física</a></li>
+          <li><a href="{{ url_for('pessoa_juridica_bp.listar') }}">🏢 Pessoa Jurídica</a></li>
+          <li><a href="{{ url_for('aluno_bp.listar') }}">🎓 Aluno</a></li>
+          <li><a href="{{ url_for('professor_bp.listar') }}">👨‍🏫 Professor</a></li>
+          <li><a href="{{ url_for('fornecedor_bp.listar') }}">🚚 Fornecedor</a></li>
+          <li><a href="{{ url_for('curso_bp.listar') }}">📚 Curso</a></li>
+          <li><a href="{{ url_for('departamento_bp.listar') }}">🏛️ Departamento</a></li>
+          <li><a href="#" onclick="window.close()">❌ Sair</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="container">
+        {% block content %}{% endblock %}
+      </div>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <small>© Sistema de Cadastro</small>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>{{ 'Editar' if registro else 'Novo' }} Professor</h1>
+<form method="post" action="{{ url_for('professor_bp.editar', id=registro.id) if registro else url_for('professor_bp.criar') }}">
+  <div class="form-row">
+    <div class="form-group">
+      <label>Nome *</label>
+      <input name="nome" required value="{{ registro.nome if registro else '' }}">
+    </div>
+    <div class="form-group">
+      <label>Matrícula *</label>
+      <input name="matricula" required value="{{ registro.matricula if registro else '' }}">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label>Titulação</label>
+      <select name="titulacao">
+        <option value="">Selecione...</option>
+        <option value="Graduação" {% if registro and registro.titulacao == 'Graduação' %}selected{% endif %}>Graduação</option>
+        <option value="Especialização" {% if registro and registro.titulacao == 'Especialização' %}selected{% endif %}>Especialização</option>
+        <option value="Mestrado" {% if registro and registro.titulacao == 'Mestrado' %}selected{% endif %}>Mestrado</option>
+        <option value="Doutorado" {% if registro and registro.titulacao == 'Doutorado' %}selected{% endif %}>Doutorado</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Departamento</label>
+      <select name="departamento">
+        <option value="">Selecione...</option>
+        <option value="Ciência da Computação" {% if registro and registro.departamento == 'Ciência da Computação' %}selected{% endif %}>Ciência da Computação</option>
+        <option value="Engenharia" {% if registro and registro.departamento == 'Engenharia' %}selected{% endif %}>Engenharia</option>
+        <option value="Medicina" {% if registro and registro.departamento == 'Medicina' %}selected{% endif %}>Medicina</option>
+        <option value="Direito" {% if registro and registro.departamento == 'Direito' %}selected{% endif %}>Direito</option>
+        <option value="Administração" {% if registro and registro.departamento == 'Administração' %}selected{% endif %}>Administração</option>
+      </select>
+    </div>
+  </div>
+  <div class="buttons">
+    <button class="btn btn-primary" type="submit">SALVAR</button>
+    <a class="btn btn-secondary" href="{{ url_for('professor_bp.listar') }}">CANCELAR</a>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>{{ 'Editar' if registro else 'Novo' }} Curso</h1>
+<form method="post" action="{{ url_for('curso_bp.editar', id=registro.id) if registro else url_for('curso_bp.criar') }}">
+  <div class="form-row">
+    <div class="form-group"><label>Nome *</label><input name="nome" required value="{{ registro.nome if registro else '' }}"></div>
+    <div class="form-group"><label>Duração (semestres) *</label><input name="duracao_semestres" type="number" min="1" required value="{{ registro.duracao_semestres if registro else '' }}"></div>
+  </div>
+  <div class="buttons"><button class="btn btn-primary">SALVAR</button><a class="btn btn-secondary" href="{{ url_for('curso_bp.listar') }}">CANCELAR</a></div>
+</form>
+{% endblock %}

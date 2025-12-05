@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>{{ 'Editar' if registro else 'Novo' }} Aluno</h1>
+<form method="post" action="{{ url_for('aluno_bp.editar', id=registro.id) if registro else url_for('aluno_bp.criar') }}">
+  <div class="form-row">
+    <div class="form-group">
+      <label>Curso *</label>
+      <select name="curso_id" required>
+        <option value="">Selecione...</option>
+        <option value="1" {% if registro and registro.curso_id == 1 %}selected{% endif %}>Administração</option>
+        <option value="2" {% if registro and registro.curso_id == 2 %}selected{% endif %}>Análise e Desenvolvimento de Sistemas</option>
+        <option value="3" {% if registro and registro.curso_id == 3 %}selected{% endif %}>Ciência da Computação</option>
+        <option value="4" {% if registro and registro.curso_id == 4 %}selected{% endif %}>Direito</option>
+        <option value="5" {% if registro and registro.curso_id == 5 %}selected{% endif %}>Engenharia Civil</option>
+        <option value="6" {% if registro and registro.curso_id == 6 %}selected{% endif %}>Medicina</option>
+        <option value="7" {% if registro and registro.curso_id == 7 %}selected{% endif %}>Psicologia</option>
+        <option value="8" {% if registro and registro.curso_id == 8 %}selected{% endif %}>Enfermagem</option>
+        <option value="9" {% if registro and registro.curso_id == 9 %}selected{% endif %}>Arquitetura</option>
+        <option value="10" {% if registro and registro.curso_id == 10 %}selected{% endif %}>Economia</option>
+        <option value="11" {% if registro and registro.curso_id == 11 %}selected{% endif %}>Marketing</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Matrícula *</label>
+      <input name="matricula" required value="{{ registro.matricula if registro else '' }}">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label>Ano de ingresso</label>
+      <input type="number" name="ano_ingresso" value="{{ registro.ano_ingresso if registro else '' }}">
+    </div>
+  </div>
+  <div class="buttons">
+    <button class="btn btn-primary" type="submit">SALVAR</button>
+    <a class="btn btn-secondary" href="{{ url_for('aluno_bp.listar') }}">CANCELAR</a>
+  </div>
+</form>
+{% endblock %}

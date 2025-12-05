@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>Alunos</h1>
+<a class="btn-add" href="{{ url_for('aluno_bp.formulario') }}">➕ Adicionar Novo</a>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Matrícula</th>
+      <th>Curso</th>
+      <th>Ano</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for aluno in registros %}
+    <tr>
+      <td>{{ aluno.id }}</td>
+      <td>{{ aluno.matricula }}</td>
+      <td>
+        {% if aluno.curso_id == 1 %}Administração
+        {% elif aluno.curso_id == 2 %}Análise e Desenvolvimento de Sistemas
+        {% elif aluno.curso_id == 3 %}Ciência da Computação
+        {% elif aluno.curso_id == 4 %}Direito
+        {% elif aluno.curso_id == 5 %}Engenharia Civil
+        {% elif aluno.curso_id == 6 %}Medicina
+        {% elif aluno.curso_id == 7 %}Psicologia
+        {% elif aluno.curso_id == 8 %}Enfermagem
+        {% elif aluno.curso_id == 9 %}Arquitetura
+        {% elif aluno.curso_id == 10 %}Economia
+        {% elif aluno.curso_id == 11 %}Marketing
+        {% else %}Curso não identificado
+        {% endif %}
+      </td>
+      <td>{{ aluno.ano_ingresso or '-' }}</td>
+      <td class="actions">
+        <a href="{{ url_for('aluno_bp.editar', id=aluno.id) }}">Editar</a>
+        <a class="delete" href="{{ url_for('aluno_bp.excluir', id=aluno.id) }}" onclick="return confirm('Excluir?')">Excluir</a>
+      </td>
+    </tr>
+  {% else %}
+    <tr><td colspan="5">Nenhum registro encontrado.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

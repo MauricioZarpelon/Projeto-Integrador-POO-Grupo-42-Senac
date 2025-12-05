@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h1>Fornecedores</h1>
+<a class="btn-add" href="{{ url_for('fornecedor_bp.formulario') }}">➕ Adicionar Novo</a>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Empresa</th>
+      <th>CNPJ</th>
+      <th>Ramo de Atividade</th>
+      <th>Contato</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for f in registros %}
+    <tr>
+      <td>{{ f.id }}</td>
+      <td>{{ f.razao_social }}</td>
+      <td>{{ f.cnpj }}</td>
+      <td>{{ f.ramo_atividade or '-' }}</td>
+      <td>{{ f.contato or '-' }}</td>
+      <td class="actions">
+        <a href="{{ url_for('fornecedor_bp.editar', id=f.id) }}">Editar</a>
+        <a class="delete" href="{{ url_for('fornecedor_bp.excluir', id=f.id) }}" onclick="return confirm('Excluir?')">Excluir</a>
+      </td>
+    </tr>
+  {% else %}
+    <tr><td colspan="6">Nenhum registro encontrado.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
