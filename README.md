@@ -16,7 +16,7 @@ Programação Orientada a Objetos | 2025
 
 ## 🧠 Objetivo do Projeto
 
-O projeto tem como objetivo aplicar os conceitos de **Programação Orientada a Objetos (POO)** e **modelagem UML** no desenvolvimento de um sistema voltado ao **cadastro de pessoas e entidades**.  
+O projeto tem como objetivo aplicar os conceitos de Programação Orientada a Objetos (POO) e de **modelagem UML** no desenvolvimento de um sistema voltado ao **cadastro e gerenciamento de pessoas e entidades**.  
 
 O sistema foi planejado para permitir o cadastro e gerenciamento de:
 - Pessoas Físicas  
